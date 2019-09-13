@@ -11,7 +11,9 @@ This repository contains code for "Rescan: Inductive Instance Segmentation for I
 
 To generate build files for Unix-like systems navigate to source code root directory and run:
 ~~~
-mkdir build && cd build
+cd apps
+mkdir build
+cd build
 cmake ..
 make
 ~~~
