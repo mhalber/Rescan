@@ -1,0 +1,8 @@
+*.a
+*.o
+*.dll
+build/
+__pycache__/ 
+*.py[cod]
+bin/**
+.vscode/**
