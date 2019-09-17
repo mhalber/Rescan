@@ -61,7 +61,7 @@ If you use this code in your work, please cite this paper:
 ~~~
 @article{HalberRescan19,
   title     = {Rescan: Inductive Instance Segmentation for Indoor RGBD Scans},
-  author    = {Maciej Halber and Yifei Shi and Kevin Kai Xu and Thomas Funkhouser},
+  author    = {Maciej Halber and Yifei Shi and Kevin Xu and Thomas Funkhouser},
   booktitle = {ICCV},
   year      = {2019}
 }
