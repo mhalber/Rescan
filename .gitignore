@@ -6,3 +6,5 @@ __pycache__/
 *.py[cod]
 bin/**
 .vscode/**
+lib/gco
+

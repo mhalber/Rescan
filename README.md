@@ -9,6 +9,9 @@
 
 This repository contains code for "Rescan: Inductive Instance Segmentation for Indoor RGBD Scans", ICCV 2019. Code to perfrom inference is written in C++. You will need a compiler with C++11 support and CMake < 2.8.
 
+**NOTE:** This code uses gco-v3.0 (see below for references) to perform graph cut optimization. gco code cannot be distributed freely - as such after you've cloned this repository, go to https://vision.cs.uwaterloo.ca/code/ and download gco-v3.0 (under Multi-label optimization).
+Then create gco folder inside the lib folder and copy gco code inside. After that continue with the rest of the instructions.
+
 To generate build files for Unix-like systems navigate to source code root directory and run:
 ~~~
 cd apps
@@ -22,14 +25,16 @@ If you're planning to run this code on a lot of data and not do any changes, rem
 cmake .. -DCMAKE_BUILD_TYPE=Release
 ~~~
 
-The code for compling most of the application is contained within this repository. The exception is rsdb_viewer, an opengl program to view the files produced by Rescan Pipeline. To build it you need [glfw3](https://www.glfw.org/) library.
+To build rsdb_viewer, an opengl program to view the files produced by Rescan Pipeline, you will need [glfw3](https://www.glfw.org/) library.
 
-Additionally, to run the entire pipeline you will need PoissonSurfaceReconstruction from Kazdhan et al. Once you have the binaries, copy them to the bin folder created during the build time.
+Additionally, to run the entire pipeline you will need [Poisson Surface Reconstruction](https://github.com/mkazhdan/PoissonRecon) from Kazdhan et al.
+
+Once you have the binaries, copy them to the bin folder created during the build time.
 
 The evaluation scripts are written in Python 3.
 
 ## Running
-To run the code you will need to download the [Rescan dataset](#). After downloading and compiling the code navigate to the root directory of the dataset (folder containing the *scene_list.txt* file). Then run:
+To run the code you will need to download the [Rescan dataset](https://rescan.cs.princeton.edu/). After downloading and compiling the code navigate to the root directory of the dataset (folder containing the *scene_list.txt* file). Then run:
 
 ~~~
 python <path to scripts/run_segmentation_pipeline> scene_list.txt <path_to_rescan_bin_folder> <path_to_rescan_script_folder>
@@ -66,3 +71,15 @@ If you use this code in your work, please cite this paper:
   year      = {2019}
 }
 ~~~
+
+
+## References
+[1] Efficient Approximate Energy Minimization via Graph Cuts.
+        Y. Boykov, O. Veksler, R.Zabih. IEEE TPAMI, 20(12):1222-1239, Nov 2001.
+
+[2] What Energy Functions can be Minimized via Graph Cuts?
+        V. Kolmogorov, R.Zabih. IEEE TPAMI, 26(2):147-159, Feb 2004. 
+
+[3] An Experimental Comparison of Min-Cut/Max-Flow Algorithms for 
+        Energy Minimization in Vision. Y. Boykov, V. Kolmogorov. 
+        IEEE TPAMI, 26(9):1124-1137, Sep 2004.
