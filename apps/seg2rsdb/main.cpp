@@ -1,7 +1,3 @@
-// TOOD(maciej): This version is done to create gt i guess... I just need it for one.
-// TODO(maciej): Change the argument list to take just the class list.
-// NOTE(maciej): this requires wierd database.rsdb file, only for class to idx table really. Should change it
-
 #define MSH_STD_IMPLEMENTATION
 #define MSH_PLY_IMPLEMENTATION
 #define MSH_ARGPARSE_IMPLEMENTATION
@@ -229,7 +225,5 @@ int32_t main( int32_t argc, char** argv )
   // Clean-up
   rsdb_free( in_rsdb );
   rsdb_free( out_rsdb );
-  rs_pointcloud_free( pointcloud, 1 );
-
   return 0;
 }

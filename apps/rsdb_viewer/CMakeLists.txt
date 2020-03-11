@@ -10,13 +10,12 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_PATH})
 include_directories ("${LIB_PATH}")
 include_directories ("${LIB_PATH}/rs")
 include_directories ("${LIB_PATH}/gco")
-include_directories ("${LIB_PATH}/im3d")
 
 find_package (OpenGL REQUIRED)
 find_package (glfw3 3.3 REQUIRED)
 
 list (APPEND SOURCE_LIST  main.cpp )
-list (APPEND SOURCE_LIST ${LIB_PATH}/glad/glad.c ${LIB_PATH}/im3d/im3d.cpp)
+list (APPEND SOURCE_LIST ${LIB_PATH}/glad/glad.c )
 
 add_executable (rsdb_viewer ${SOURCE_LIST})
 target_link_libraries (rsdb_viewer glfw)

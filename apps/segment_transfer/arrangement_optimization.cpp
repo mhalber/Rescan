@@ -741,12 +741,15 @@ rsao__apply_replace_action( rsdb_t* rsdb, int32_t scene_idx,
   int32_t object_ids[1024] = {0};
   int32_t pose_ids[1024] = {0};
   size_t count = 0;
+  
   for( size_t i = 0 ; i < msh_array_len(rsdb->objects); ++i )
   {
+    if( count >= 1024 ) { printf("%d %d\n", i, (int32_t)msh_array_len(rsdb->objects)); break; }
     if( rsdb_is_object_static(rsdb, i) ) { continue; }
-    for( size_t j = 0; j < msh_array_len(  rsdb->proposed_poses[scene_idx] ); ++j )
+    for( size_t j = 0; j < msh_array_len(  rsdb->proposed_poses[scene_idx][i] ); ++j )
     {
-      msh_vec3_t new_pos = msh_vec4_to_vec3( rsdb->proposed_poses[scene_idx][i][j].col[3] ); 
+      msh_vec3_t new_pos = msh_vec4_to_vec3( rsdb->proposed_poses[scene_idx][i][j].col[3] );
+
       if( msh_vec3_norm(msh_vec3_sub(new_pos, old_pos)) < 0.35f )
       {
         object_ids[count] = i;
@@ -836,7 +839,6 @@ rsao_simulated_annealing( rsdb_t* rsdb, int32_t scene_idx, rsao_opts_t* opts )
     rsao_action_t action = (rsao_action_t)msh_pdfsample_linear( action_pdf,
                                                                 msh_rand_nextf(&rand_gen),
                                                                 RSAO_N_ACTIONS );
-
     // Step 2. Apply random action
     rsao_action_info_t action_info = {0};
     if( action == RSAO_ADD )

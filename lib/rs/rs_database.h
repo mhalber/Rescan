@@ -475,7 +475,6 @@ int rsdb_load(rsdb_t* rsdb, const char* filename, int load_pointclouds)
   int n_arrangements  = msh_array_len( rsdb->arrangements );
   int n_classes = hashtable_count( &rsdb->class_name_to_idx );
 
-  assert( n_scenes == n_arrangements );
   // Load pointclouds if requested
   if( rsdb->pointcloud_data_present )
   {
@@ -559,7 +558,7 @@ rsdb_save(rsdb_t* rsdb, const char* db_filename, int save_objects)
     fprintf(fp, "class %s %zu\n", name, itc_keys[i] );
   }
 
-   for( size_t i = 0; i < msh_array_len( rsdb->scenes ); ++i)
+  for( size_t i = 0; i < msh_array_len( rsdb->scenes ); ++i)
   {
     rs_scene_t* scene = &rsdb->scenes[i];
     char prp_filename[1024] = {0};

@@ -62,8 +62,6 @@ NOTES: For now this is a tool which creates window for visual debugging. However
 #include "nuklear/nuklear.h"
 #include "GLFW/glfw3.h"
 #include "nuklear/nuklear_glfw_gl3.h"
-#include "im3d.h"
-#include "im3d_math.h" // TODO(maciej): this is optional, I don't need this.
 #include "cloudvis.h"
 #include "debugvis.h"
 #include "stb/stb_image_write.h"
@@ -282,7 +280,7 @@ nk_update_camera( struct nk_context* nk_ctx, msh_camera_t* cam, msh_vec4_t viewp
 {
   struct nk_input input = nk_ctx->input;
   
-  if( !nk_item_is_any_active(nk_ctx) && Im3d::GetActiveId() == Im3d::Id_Invalid )
+  if( !nk_item_is_any_active(nk_ctx) )
   {
     msh_arcball_camera_update(cam,  
                               msh_vec2(input.mouse.prev.x,input.mouse.prev.y), 
@@ -403,7 +401,7 @@ process_keyboard_shortcuts(cldvis_ctx_t* cldvis_ctx, dbgvis_ctx_t* dbgvis_ctx)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// TMP I/O
+// I/O
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void load_pose_proposals( const char* filename, 
@@ -1022,8 +1020,6 @@ main( int argc, char** argv )
       save_screenshot_name( opts.s_options.filename, fb_w, fb_h );
       break;
     }
-
-    Im3d::Draw();
 
     if( take_screenshot )
     {

@@ -7,7 +7,7 @@
 
 ## Building
 
-This repository contains code for "Rescan: Inductive Instance Segmentation for Indoor RGBD Scans", ICCV 2019. Code to perfrom inference is written in C++. You will need a compiler with C++11 support and CMake < 2.8.
+This repository contains code for "Rescan: Inductive Instance Segmentation for Indoor RGBD Scans", ICCV 2019. Code to perfrom inference is written in C++. You will need a compiler with C++11 support and CMake > 2.8.
 
 **NOTE:** This code uses gco-v3.0 (see below for references) to perform graph cut optimization. gco code cannot be distributed freely - as such after you've cloned this repository, go to https://vision.cs.uwaterloo.ca/code/ and download gco-v3.0 (under Multi-label optimization).
 Then create gco folder inside the lib folder and copy gco code inside. After that continue with the rest of the instructions.
